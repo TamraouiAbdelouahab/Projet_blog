@@ -53,9 +53,9 @@
 
 ### **5. Prototype :**
   
-- visualiser les articles  
-- ajouter un article  
-- supprimer un article  
+- visualiser les Categories  
+- ajouter un Categorie  
+- supprimer un Categorie  
 
 |||
 
