@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -11,7 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('admin.article.index');
+        $articles = Article::All();
+        return view('admin.article.index', compact('articles'));
     }
 
     /**
@@ -19,7 +23,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.article.create');
+        $categories = Category::All();
+        return view('admin.article.create', compact('categories'));
     }
 
     /**
@@ -27,7 +32,19 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request, [
+        'title'=> 'required',
+        'content'=> 'required',
+        'category'=> 'required']);
+
+        $article = Article::create([
+            'title'=> $request->title,
+            'content'=> $request->content,
+            'user_id'=>Auth::user()->id,
+            'category_id'=> $request->category,
+        ]);
+
+        return redirect()->route('article.index')->with('success', 'Article créé avec succès.');
     }
 
     /**
@@ -57,8 +74,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( Article $article)
     {
-        //
+        // $article = Article::find($id);
+        $article->delete();
+        return redirect()->route('article.index')->with('success', 'Article supprimé avec succès.');
     }
 }
