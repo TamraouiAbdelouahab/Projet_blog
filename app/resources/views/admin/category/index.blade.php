@@ -62,6 +62,7 @@
                                                 @method('delete')
                                                 <button type="submit" onclick="confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </button>
                                             </form>
+                                            <a href="{{ Route('category.show',$category) }}" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i> </a>
                                         </td>
                                     </tr>
                                     @endforeach
