@@ -1,4 +1,3 @@
-
 # Projet_blog
 
 Follow these steps to set up and run the **Projet_blog** application on your local machine:

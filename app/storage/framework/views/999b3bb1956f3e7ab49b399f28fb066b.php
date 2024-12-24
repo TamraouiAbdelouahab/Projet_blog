@@ -4,11 +4,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Liste des Articles</h1>
+                        <h1>Liste des catégories</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo e(Route('dashboard')); ?>">Accueil</a></li>
                             <li class="breadcrumb-item active">Categories</li>
                         </ol>
                     </div>
@@ -48,15 +48,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categorie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td><?php echo e($categorie->id); ?></td>
-                                        <td><?php echo e($categorie->name); ?></td>
-                                        <td><?php echo e($categorie->slug); ?></td>
-                                        <td><?php echo e($categorie->created_at->format('Y-m-d')); ?></td>
+                                        <td><?php echo e($category->id); ?></td>
+                                        <td><?php echo e($category->name); ?></td>
+                                        <td><?php echo e($category->slug); ?></td>
+                                        <td><?php echo e($category->created_at->format('Y-m-d')); ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
-                                            <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
+                                            <a href="<?php echo e(Route('category.edit',$category)); ?>" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
+                                            <form action="<?php echo e(Route('category.destroy',$category)); ?>" method="POST" class="d-inline">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('delete'); ?>
+                                                <button type="submit" onclick="confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
