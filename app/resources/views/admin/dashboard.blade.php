@@ -8,13 +8,13 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-                            <p>New Orders</p>
+                            <h3>{{ $totalUsers }} </h3>
+                            <p class="fs-3 fw-bold">Users</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-cart-plus"></i>
+                            <i class="fas fa-user"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -23,28 +23,27 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-                            <p>Bounce Rate</p>
+                            <h3>{{ $totalArticles }}</sup></h3>
+                            <p class="fs-3 fw-bold">Articles</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-newspaper"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ Route('article.index') }}" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
-
                 <!-- Box 3 -->
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
-                            <p>User Registrations</p>
+                            <h3>{{ $totalCategories }}</h3>
+                            <p class="fs-3 fw-bold">Catégories</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-user-plus"></i>
+                            <i class="fas fa-tags"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ Route('category.index') }}" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -53,13 +52,13 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
-                            <p>Unique Visitors</p>
+                            <h3>{{ $totalComments }}</h3>
+                            <p class="fs-3 fw-bold">Commentaires</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-chart-pie"></i>
+                            <i class="fas fa-comment"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
