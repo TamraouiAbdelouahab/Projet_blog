@@ -7,28 +7,29 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="" method="POST">
+            <form action="{{route('article.store')}}" method="POST">
                 @csrf <!-- Pour la sécurité CSRF -->
                 <div class="card-body">
                     <!-- Champ Titre -->
                     <div class="form-group">
-                        <label for="title">Titre</label>
+                        <label for="title">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Entrez le titre">
                     </div>
                     <!-- Champ Description -->
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea name="description" class="form-control" id="description" rows="3" placeholder="Entrez la description"></textarea>
+                        <label for="description">Content</label>
+                        <textarea name="content" class="form-control" id="description" rows="3" placeholder="Entrez la description"></textarea>
                     </div>
 
                     <!-- Champ Catégorie -->
                     <div class="form-group">
                         <label for="category">Catégorie</label>
                         <select name="category" class="form-control" id="category">
-                            <option value="">Choisissez une catégorie</option>
-                            <option value="Tech">Tech</option>
-                            <option value="Lifestyle">Lifestyle</option>
-                            <option value="Business">Business</option>
+
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+
                         </select>
                     </div>
 

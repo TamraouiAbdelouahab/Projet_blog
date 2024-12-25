@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
-    */
+     */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.category.index',compact('categories'));
+        $tags = Tag::all();
+        // dd($tags);
+        return view('admin.tag.index',compact('tags'));
     }
 
     /**
@@ -22,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.tag.create');
     }
 
     /**
@@ -35,55 +35,56 @@ class CategoryController extends Controller
             'slug'  => 'required|max:255',
         ]);
 
-        Category::create([
+        Tag::create([
             'name' => $validated['title'],
             'slug'=> $validated['slug']
         ]);
 
-        return redirect()->route('category.index')->with('success', 'Catégorie créé avec succès.');
+        return redirect()->route('tag.index')->with('success', 'Catégorie créé avec succès.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Tag $tag)
     {
-        return view('admin.category.show',compact('category'));
+        return view('admin.tag.show',compact('tag'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Tag $tag)
     {
+        return view('admin.tag.edit',compact('tag'));
 
-        return view('admin.category.edit',compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Tag $tag)
     {
         $validated = $request->validate([
             'title' => 'required|max:255',
             'slug'  => 'required|max:255',
         ]);
 
-        $category->update([
+        $tag->update([
             'name' => $validated['title'],
             'slug'=> $validated['slug']
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('tag.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Tag $tag)
     {
-        $category->delete();
-        return redirect()->route('category.index');
+        $tag->delete();
+        return redirect()->route('tag.index');
     }
 }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +17,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('/dashboard/article',ArticleController::class);
 Route::resource('/dashboard/category',CategoryController::class);
+Route::resource('/dashboard/tag',TagController::class);
 
 
 Auth::routes();

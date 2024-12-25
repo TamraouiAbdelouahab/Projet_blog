@@ -39,33 +39,32 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Titre</th>
-                                    <th>Auteur</th>
-                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>User</th>
+                                    <th>Post date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Article 1</td>
-                                    <td>Jean Dupont</td>
-                                    <td>2024-12-20</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Article 2</td>
-                                    <td>Marie Curie</td>
-                                    <td>2024-12-21</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
-                                    </td>
-                                </tr>
+                                @foreach ($articles as $article)
+                                    <tr>
+                                        <td>{{ $article->id }}</td>
+                                        <td>{{ $article->title }}</td>
+                                        <td>{{ $article->category->name }}</td>
+                                        <td>{{ $article->user->name }}</td>
+                                        <td>{{ $article->created_at }}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
+                                            <form action="{{ route('article.destroy', $article) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 <!-- Plus de lignes ici -->
                             </tbody>
                         </table>
