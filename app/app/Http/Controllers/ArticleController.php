@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+
 use App\Models\Tag;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +36,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
         $valideted = $request->validate([
             'title'=> 'required',
             'content'=> 'required',
@@ -49,7 +52,6 @@ class ArticleController extends Controller
             'category_id'=> $valideted['category'],
         ]);
         $article->tags()->attach($request->tags);
-
 
 
         return redirect()->route('article.index')->with('success', 'Article créé avec succès.');
