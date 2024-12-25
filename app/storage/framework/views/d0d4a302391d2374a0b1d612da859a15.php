@@ -38,33 +38,32 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Titre</th>
-                                    <th>Auteur</th>
-                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>User</th>
+                                    <th>Post date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Article 1</td>
-                                    <td>Jean Dupont</td>
-                                    <td>2024-12-20</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Article 2</td>
-                                    <td>Marie Curie</td>
-                                    <td>2024-12-21</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </a>
-                                    </td>
-                                </tr>
+                                <?php $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <tr>
+                                        <td><?php echo e($article->id); ?></td>
+                                        <td><?php echo e($article->title); ?></td>
+                                        <td><?php echo e($article->category->name); ?></td>
+                                        <td><?php echo e($article->user->name); ?></td>
+                                        <td><?php echo e($article->created_at); ?></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
+                                            <form action="<?php echo e(route('article.destroy', $article)); ?>" method="POST" style="display:inline;">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <!-- Plus de lignes ici -->
                             </tbody>
                         </table>
