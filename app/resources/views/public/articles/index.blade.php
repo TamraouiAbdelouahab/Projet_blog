@@ -1,38 +1,66 @@
 @extends('layouts.public')
 
-@section('title', 'Articles')
-
 @section('content')
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold text-center mb-6">Latest Articles</h1>
-    <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        @foreach ($articles as $article)
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <!-- Article Image -->
-                @if ($article->image)
-                    <img src="{{ $article->image }}" alt="{{ $article->title }}" class="w-full h-48 object-cover">
-                @else
+
+<!-- Page Header -->
+<div class="bg-gray-200 py-10">
+    <h1 class="text-4xl font-bold text-center text-gray-800">
+        Latest Articles
+    </h1>
+</div>
+
+<!-- Articles Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 px-6">
+    @foreach ($articles as $article)
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:-translate-y-2 hover:shadow-2xl duration-300">
+            <!-- Article Image -->
+            <a href="{{ route('public.public.show', $article->id) }}">
+                <img class="w-full h-48 object-cover" src="{{ $article->image_url ?? 'https://via.placeholder.com/400x200' }}" alt="{{ $article->title }}">
+            </a>
+            
+            <!-- Article Content -->
+            <div class="p-6">
+                <!-- Category -->
+                @if(!empty($article->category))
+                    <span class="inline-block bg-purple-100 text-purple-600 text-xs font-semibold rounded-full px-3 py-1 mb-3">
+                        {{ $article->category->name }}
+                    </span>
                 @endif
-                <!-- Article Content -->
-                <div class="p-6 flex flex-col h-full">
-                    <h2 class="text-xl font-semibold mb-2">
-                        <a href="{{ route('public.public.show', $article->id) }}" class="hover:underline text-blue-600">
-                            {{ $article->title }}
-                        </a>
-                    </h2>
-                    <p class="text-gray-500 text-sm mb-4">
-                        By <strong>{{ $article->user->name }}</strong> in 
-                        <strong>{{ $article->category->name }}</strong>
+
+                <!-- Article Title -->
+                <a href="{{ route('public.public.show', $article->id) }}" class="block text-2xl font-semibold text-gray-800 hover:text-purple-600 transition-colors duration-300">
+                    {{ $article->title }}
+                </a>
+
+                <!-- Content Preview -->
+                <p class="text-gray-600 mt-3 line-clamp-3">
+                    {{ Str::limit($article->content, 100, '...') }}
+                </p>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="bg-gray-100 px-6 py-4 flex justify-between items-center">
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2">
+                    @if(!empty($article->tags))
+                        @foreach ($article->tags as $tag)
+                            <span class="text-xs bg-blue-100 text-blue-600 font-semibold px-2.5 py-0.5 rounded">
+                                {{ $tag->name }}
+                            </span>
+                        @endforeach
+                    @endif
+                </div>
+
+                <!-- Author Info -->
+                <div class="flex items-center">
+                    <img class="w-8 h-8 rounded-full object-cover" src="{{ $article->user->profile_picture ?? 'https://via.placeholder.com/50' }}" alt="{{ $article->user->name }}">
+                    <p class="ml-2 text-sm font-medium text-gray-700">
+                        {{ $article->user->name }}
                     </p>
-                    <p class="text-gray-700 flex-grow">{{ Str::limit($article->content, 100) }}</p>
-                    <!-- Fixed Button -->
-                    <a href="{{ route('public.public.show', $article->id) }}" 
-                       class="mt-4 py-2 px-4 bg-light-300 text-black-100 text-sm font-bold rounded-xl hover:bg-gray-300 transition duration-200">
-                        Read More
-                    </a>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
 </div>
+
 @endsection
