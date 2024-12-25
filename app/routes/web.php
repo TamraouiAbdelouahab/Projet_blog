@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TagController;
 
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,11 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
+Route::get('articles/{article}/comments', [CommentController::class, 'indexByArticle'])->name('comment.indexByArticle');
 
+
+
+Route::resource('/dashboard/comment',CommentController::class);
 Route::resource('/dashboard/article',ArticleController::class);
 Route::resource('/dashboard/category',CategoryController::class);
 Route::resource('/dashboard/tag',TagController::class);
