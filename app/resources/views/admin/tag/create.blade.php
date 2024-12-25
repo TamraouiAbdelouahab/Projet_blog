@@ -7,7 +7,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{Route('dashboard')}}">Accueil</a></li>
-                            <li class="breadcrumb-item active"><a href="{{Route('tag.index')}}">Categories</a></li>
+                            <li class="breadcrumb-item active"><a href="{{Route('tag.index')}}">tags</a></li>
                             <li class="breadcrumb-item active">Ajouter</li>
                         </ol>
                     </div>
