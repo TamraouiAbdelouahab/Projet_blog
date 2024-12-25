@@ -21,7 +21,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="/" class="brand-link">
                 <img src="https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Prototype</span>
+                <span class="brand-text font-weight-light">Blog</span>
             </a>
             <div class="sidebar">
                 <nav class="mt-2">
@@ -52,6 +52,12 @@
                                     <a href="{{ route('category.index') }}" class="nav-link">
                                         <i class="fas fa-circle nav-icon"></i>
                                         <p>Categories</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('tag.index') }}" class="nav-link">
+                                        <i class="fas fa-circle nav-icon"></i>
+                                        <p>Tags</p>
                                     </a>
                                 </li>
                             </ul>
