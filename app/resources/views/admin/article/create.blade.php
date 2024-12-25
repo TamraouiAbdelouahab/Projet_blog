@@ -33,10 +33,14 @@
                         </select>
                     </div>
 
-                    <!-- Champ Image -->
-                    <div class="form-group">
-                        <label for="image">Image</label>
-                        <input type="file" name="image" class="form-control-file" id="image">
+                    <!-- Champ Tags -->
+                    <div class="mt-5">
+                        <label for="tags" class="form-label">Sélectionnez les tags :</label>
+                        <select id="tags" name="tags[]" class="form-select" multiple>
+                            @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <!-- /.card-body -->
