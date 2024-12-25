@@ -3,18 +3,17 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\DashboardController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
 
-
+Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::resource('/dashboard/article',ArticleController::class);
 Route::resource('/dashboard/category',CategoryController::class);
 Route::resource('/dashboard/tag',TagController::class);
