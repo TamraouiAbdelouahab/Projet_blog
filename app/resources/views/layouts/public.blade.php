@@ -11,7 +11,7 @@
     <nav class="relative px-4 py-4 flex justify-between items-center bg-gray-50">
         <!-- Brand Logo -->
         <a class="text-3xl font-bold leading-none" href="/">
-            <span class="brand-text font-weight-light">Blog</span>
+            <span class="brand-text font-weight-light">Blog{:}</span>
         </a>
         <!-- Mobile Menu Button -->
         <div class="lg:hidden">
