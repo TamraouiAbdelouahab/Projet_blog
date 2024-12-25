@@ -12,7 +12,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::paginate(1);
         // dd($tags);
         return view('admin.tag.index',compact('tags'));
     }

@@ -37,8 +37,6 @@
                     <p>{{ $category->slug }}</p>
                     <h4>created at : </h4>
                     <p>{{ $category->created_at }}</p>
-                    
-
                 </div>
             </div>
         </section>

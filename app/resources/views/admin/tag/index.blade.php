@@ -19,7 +19,7 @@
                 <div class="row mb-2 justify-content-end">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ Route('tag.create') }}" class="btn btn-primary btn-sm p-2 text-white"><i class="fas fa-plus"></i> Ajouter catégorie</a>
+                            <a href="{{ Route('tag.create') }}" class="btn btn-primary btn-sm p-2 text-white"><i class="fas fa-plus"></i> Ajouter tag</a>
                         </ol>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Table des catégories</h3>
+                        <h3 class="card-title">Table des tags</h3>
                     </div>
                     <!-- /.card-header -->
                     @if($tags->isEmpty())
@@ -70,6 +70,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div>
+                                {{ $tags->links() }}
+                            </div>
                         </div>
                     @endif
                     <!-- /.card-body -->
