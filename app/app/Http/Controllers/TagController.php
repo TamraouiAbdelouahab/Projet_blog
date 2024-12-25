@@ -12,8 +12,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
-        // dd($tags);
+        $tags = Tag::paginate(2);
+        // dd($tags->toSql());
+        // dd( $tags->currentPage());
+       
         return view('admin.tag.index',compact('tags'));
     }
 
