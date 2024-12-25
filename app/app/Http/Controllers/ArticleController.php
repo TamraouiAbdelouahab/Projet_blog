@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,8 +24,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = Category::All();
-        return view('admin.article.create', compact('categories'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.article.create', compact('categories','tags'));
     }
 
     /**
@@ -32,17 +34,23 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
-        'title'=> 'required',
-        'content'=> 'required',
-        'category'=> 'required']);
+        $valideted = $request->validate([
+            'title'=> 'required',
+            'content'=> 'required',
+            'category'=> 'required',
+            'tags'=>'array',
+            'tags.*' => 'exists:tags,id'
+        ]);
 
         $article = Article::create([
-            'title'=> $request->title,
-            'content'=> $request->content,
+            'title'=> $valideted['title'],
+            'content'=> $valideted['content'],
             'user_id'=>Auth::user()->id,
-            'category_id'=> $request->category,
+            'category_id'=> $valideted['category'],
         ]);
+        $article->tags()->attach($request->tags);
+
+
 
         return redirect()->route('article.index')->with('success', 'Article créé avec succès.');
     }
@@ -50,25 +58,43 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Article $article)
     {
-        return view('admin.article.show');
+        return view('admin.article.show',compact('article'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Article $article)
     {
-        return view('admin.article.edit');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.article.edit',compact('article','categories','tags'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $valideted = $request->validate([
+            'title'=> 'required',
+            'content'=> 'required',
+            'category'=> 'required',
+            'tags'=>'array',
+            'tags.*' => 'exists:tags,id'
+        ]);
+
+        $article->update([
+            'title'=> $valideted['title'],
+            'content'=> $valideted['content'],
+            'category_id'=> $valideted['category'],
+        ]);
+        $article->tags()->sync($request->tags);
+
+        return redirect()->route('article.index')->with('success', 'Article créé avec succès.');
+
     }
 
     /**
