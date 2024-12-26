@@ -36,6 +36,10 @@ Follow these steps to set up and run the **Projet_blog** application on your loc
     ```bash
     php artisan key:generate
     ```
+6. generate permission and Roles
+    ```bash
+    composer require spatie/laravel-permission
+    ```
 
 ## Set Up the Database:
 
@@ -78,5 +82,13 @@ Follow these steps to set up and run the **Projet_blog** application on your loc
     ```bash
     php artisan serve
     ```
+
+## Comptes 
+
+### Admin 
+
+- login : admin@gmail.com
+- password : admin
+
 
 Your application should now be running! Open your browser and navigate to the local development server URL provided in the terminal (usually `http://127.0.0.1:8000`).
