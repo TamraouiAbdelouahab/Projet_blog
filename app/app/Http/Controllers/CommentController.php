@@ -8,19 +8,21 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
+        // Implementation for listing comments (not provided)
     }
 
-    public function indexByArticle(Article $article){
+    /**
+     * Display comments for a specific article.
+     */
+    public function indexByArticle(Article $article)
+    {
         $comments = $article->comments;
-        return view("admin.comment.index", compact("comments","article"));
+        return view("admin.comment.index", compact("comments", "article"));
     }
 
     /**
@@ -28,7 +30,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        // Implementation for creating a comment (not provided)
     }
 
     /**
@@ -52,21 +54,25 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        $valideted = $request->validate([
-
-            'content'=> 'required',
+        $validated = $request->validate([
+            'content' => 'required',
         ]);
 
         $comment->update([
-            'content'=> $valideted['content'],
+            'content' => $validated['content'],
         ]);
+
         $article = $comment->article;
 
-        return redirect()->route('comment.indexByArticle',$article)->with('success', 'Commentaire modifier avec succès.');
-
+        return redirect()
+            ->route('comment.indexByArticle', $article)
+            ->with('success', 'Commentaire modifié avec succès.');
     }
-    // Store Function 
-      public function store(Request $request, $articleId)
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request, $articleId)
     {
         // Validate the request
         $request->validate([
@@ -83,8 +89,10 @@ class CommentController extends Controller
         ]);
 
         // Redirect back with a success message
-        return redirect()->route('public.public.show', $article->id)
+        return redirect()
+            ->route('public.public.show', $article->id)
             ->with('success', 'Your comment has been added!');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -93,6 +101,9 @@ class CommentController extends Controller
     {
         $article = $comment->article;
         $comment->delete();
-        return redirect()->route('comment.indexByArticle',$article)->with('success', 'Commentaire supprimé avec succès.');
+
+        return redirect()
+            ->route('comment.indexByArticle', $article)
+            ->with('success', 'Commentaire supprimé avec succès.');
     }
 }

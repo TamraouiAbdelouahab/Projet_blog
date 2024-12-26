@@ -73,5 +73,6 @@
                 </div>
                 <!-- /.card -->
             </div>
+            {{ $articles->links('pagination::bootstrap-5') }}
         </section>
     @endsection

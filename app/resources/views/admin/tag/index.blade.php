@@ -25,9 +25,9 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Main content -->
-        
+
         <section class="content">
             <div class="container-fluid">
                 <div class="card">
@@ -50,7 +50,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   
+
                                     @foreach($tags as $tag)
                                     <tr>
                                         <td>{{ $tag->id }}</td>
@@ -70,7 +70,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            
+
                         </div>
                     @endif
                     <!-- /.card-body -->
