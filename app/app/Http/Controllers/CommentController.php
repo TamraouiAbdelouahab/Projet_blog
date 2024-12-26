@@ -2,13 +2,71 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Comment;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, $articleId)
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+
+    }
+
+    public function indexByArticle(Article $article){
+        $comments = $article->comments;
+        return view("admin.comment.index", compact("comments","article"));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Comment $comment)
+    {
+        return view("admin.comment.show", compact("comment"));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Comment $comment)
+    {
+        return view("admin.comment.edit", compact("comment"));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Comment $comment)
+    {
+        $valideted = $request->validate([
+
+            'content'=> 'required',
+        ]);
+
+        $comment->update([
+            'content'=> $valideted['content'],
+        ]);
+        $article = $comment->article;
+
+        return redirect()->route('comment.indexByArticle',$article)->with('success', 'Commentaire modifier avec succès.');
+
+    }
+    // Store Function 
+      public function store(Request $request, $articleId)
     {
         // Validate the request
         $request->validate([
@@ -27,5 +85,14 @@ class CommentController extends Controller
         // Redirect back with a success message
         return redirect()->route('public.public.show', $article->id)
             ->with('success', 'Your comment has been added!');
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Comment $comment)
+    {
+        $article = $comment->article;
+        $comment->delete();
+        return redirect()->route('comment.indexByArticle',$article)->with('success', 'Commentaire supprimé avec succès.');
     }
 }
