@@ -29,11 +29,12 @@ Route::resource('/dashboard/tag',TagController::class);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Public Routes
+
 Auth::routes();
 Route::get('/public', [App\Http\Controllers\HomeController::class, 'publicIndex'])->name('public.public.index');
 Route::get('/public/article/{id}', [App\Http\Controllers\HomeController::class, 'publicShow'])->name('public.public.show');
 Route::post('/articles/{id}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('public.article.comments.store');
+
 
 // Admin Routes with 'admin' role middleware
 Route::group(['middleware' => ['permission:view admin']], function () {
