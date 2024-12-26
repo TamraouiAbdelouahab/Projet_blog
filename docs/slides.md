@@ -1,6 +1,6 @@
 ## Projet Blog
 
-- **Présenté par** : Zakaria Azizi  
+- **Réalisé par** :
   - Zakaria Azizi  
   - TAMRAOUI Abdelouahab  
   - AMAZU Ayoub  
@@ -10,7 +10,7 @@
 |||
 
 ### **1. Introduction**
-
+<img src="Blog.png" alt="Diagramme des classes" width="850" height="590">
 |||
 
 ### **3. Planification :**
@@ -50,6 +50,11 @@
 </table>
 
 |||
+### **5. Apprentissage :**
+- Laravel ui
+- Security spatie
+
+|||
 
 ### **5. Prototype :**
   
@@ -60,10 +65,12 @@
 |||
 
 ### **6. Cas d'utilisation :**
+<img src="UseCase.png" alt="Diagramme des classes" width="850" height="590">
 
 |||
 
 ### **7. Diagramme des classes :**
+<img src="Diagramme_des_classes.png" alt="Diagramme des classes" width="700" height="550">
 
 |||
 
