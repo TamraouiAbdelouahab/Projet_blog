@@ -37,9 +37,11 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        {{ $permissions =  $user->permissions;}}
+        return view('admin.user.show',compact('user','permissions'));
+
     }
 
     /**
@@ -75,8 +77,9 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index');
     }
 }

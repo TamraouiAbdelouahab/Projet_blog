@@ -36,11 +36,9 @@ Follow these steps to set up and run the **Projet_blog** application on your loc
     ```bash
     php artisan key:generate
     ```
-
 ## partier securiter
 7. Installer package via composer
      ```bash
-
     composer require spatie/laravel-permission
     ```
 
