@@ -32,12 +32,13 @@
                                     <i class="fas fa-sign-out-alt mr-2"></i> Logout
                                 </button>
                             </form>
+
                         </li>
                     </ul>
                 </li>
             </ul>
-            
-        
+
+
         </nav>
 
         <!-- Sidebar -->
@@ -90,9 +91,15 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+
+                                    <a href="{{ route('comment.index') }}" class="nav-link">
+                                        <i class="fas fa-circle nav-icon"></i>
+                                        <p>Commentaires</p>
+
                                     <a href="{{ route('user.index') }}" class="nav-link">
                                         <i class="fas fa-user nav-icon"></i>
                                         <p>Users</p>
+
                                     </a>
                                 </li>
                             </ul>

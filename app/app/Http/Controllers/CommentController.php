@@ -13,7 +13,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        // Implementation for listing comments (not provided)
+        $comments = Comment::All();
+        return view("admin.comment.index", compact("comments"));
     }
 
     /**
@@ -22,7 +23,7 @@ class CommentController extends Controller
     public function indexByArticle(Article $article)
     {
         $comments = $article->comments;
-        return view("admin.comment.index", compact("comments", "article"));
+        return view("admin.comment.indexByArticle", compact("comments", "article"));
     }
 
     /**
@@ -62,11 +63,8 @@ class CommentController extends Controller
             'content' => $validated['content'],
         ]);
 
-        $article = $comment->article;
 
-        return redirect()
-            ->route('comment.indexByArticle', $article)
-            ->with('success', 'Commentaire modifié avec succès.');
+        return redirect()->route('comment.show',$comment)->with('success', 'Commentaire modifié avec succès.');
     }
 
     /**
@@ -98,6 +96,15 @@ class CommentController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Comment $comment)
+    {
+        $comment->delete();
+
+        return redirect()
+            ->route('comment.index')
+            ->with('success', 'Commentaire supprimé avec succès.');
+    }
+
+    public function destroyByArticle(Comment $comment)
     {
         $article = $comment->article;
         $comment->delete();
