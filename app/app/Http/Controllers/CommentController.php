@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
@@ -48,17 +50,28 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comment $comment)
     {
-        //
+        return view("admin.comment.edit", compact("comment"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $valideted = $request->validate([
+
+            'content'=> 'required',
+        ]);
+
+        $comment->update([
+            'content'=> $valideted['content'],
+        ]);
+        $article = $comment->article;
+
+        return redirect()->route('comment.indexByArticle',$article)->with('success', 'Commentaire modifier avec succès.');
+
     }
 
     /**

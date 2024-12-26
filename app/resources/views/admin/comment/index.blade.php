@@ -54,7 +54,7 @@
                                         <td>{{ $comment->created_at->format('Y-m-d') }}</td>
                                         <td>
                                             <a href="{{ route('comment.show', $comment) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
+                                            <a href="{{ route('comment.edit', $comment) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
                                             <form action="{{ route('comment.destroy', $comment) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
