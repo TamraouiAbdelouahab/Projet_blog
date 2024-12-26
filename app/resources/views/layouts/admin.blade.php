@@ -93,7 +93,7 @@
                                 <li class="nav-item">
 
                                     <a href="{{ route('comment.index') }}" class="nav-link">
-                                        <i class="fas fa-circle nav-icon"></i>
+                                        <i class="fas fa-comment nav-icon"></i>
                                         <p>Commentaires</p>
 
                                     <a href="{{ route('user.index') }}" class="nav-link">

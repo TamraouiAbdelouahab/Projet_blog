@@ -24,13 +24,13 @@
         </div>
         <!-- Navigation Links -->
         <ul id="navbar-menu" class="hidden lg:flex lg:items-center lg:space-x-6">
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="/">Home</a></li>
+            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="{{ Route('public.public.index') }}">Home</a></li>
             @if(Auth::check() && Auth::user()->hasRole('admin'))
             <li><a class="text-sm text-gray-400 hover:text-gray-500" href="{{ Route('dashboard') }}">Dashboard</a></li>
             @endif
-            <li><a class="text-sm text-blue-600 font-bold" href="/">Blogs</a></li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="/about">About Us</a></li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="/about">Contact Us</a></li>
+            <li><a class="text-sm text-blue-600 font-bold" href="{{ Route('public.public.index') }}">Blogs</a></li>
+            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="/About">About Us</a></li>
+            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="/Contact">Contact Us</a></li>
         </ul>
         <!-- Authentication Links -->
         @auth
