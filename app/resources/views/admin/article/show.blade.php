@@ -29,21 +29,28 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="card p-4">
-                    <h4>id : </h4>
+                    <h4>ID:</h4>
                     <p>{{ $article->id }}</p>
-                    <h4>Name : </h4>
+                    <h4>Name:</h4>
                     <p>{{ $article->title }}</p>
-                    <h4>Contenu : </h4>
+                    <h4>Content:</h4>
                     <p>{{ $article->content }}</p>
-                    <h4>User_id : </h4>
+                    <h4>User ID:</h4>
                     <p>{{ $article->user_id }}</p>
-                    <h4>Category_id : </h4>
+                    <h4>Category ID:</h4>
                     <p>{{ $article->category_id }}</p>
-                    <h4>Created at : </h4>
+                    <h4>Created At:</h4>
                     <p>{{ $article->created_at }}</p>
 
-
+                    <div class="d-flex justify-content-end mt-3">
+                        <a href="{{ Route('comment.indexByArticle',$article) }}" class="btn btn-secondary btn-sm p-2 text-white">
+                            <i class="fas fa-comments mr-2"></i>View Comments
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
+
+
+
     @endsection

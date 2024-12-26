@@ -21,7 +21,7 @@
                 <option value="">Select Role</option>
                 @foreach($roles as $role)
                     <option value="{{ $role->name }}" 
-                        {{ $userRole  == $role->name ? 'selected' : '' }}>
+                       @selected($user->hasRole($role->name))>
                         {{ ucfirst($role->name) }}
                     </option>
                 @endforeach
@@ -40,7 +40,7 @@
                                    name="permissions[]" 
                                    value="{{ $permission->name}}" 
                                    id="permission_{{ $permission->id }}"
-                                   {{ in_array($permission->id, $userPermissions) ? 'checked' : '' }}>
+                                   {{ in_array($permission->id, $userPermissions) ||$user->hasRole('admin') ? 'checked' : '' }}>
                                  <label class="form-check-label" for="permission_{{ $permission->id }}">
                                 {{ ucfirst($permission->name) }}
                             </label>

@@ -84,4 +84,12 @@ Follow these steps to set up and run the **Projet_blog** application on your loc
     php artisan serve
     ```
 
+## Comptes 
+
+### Admin 
+
+- login : admin@gmail.com
+- password : admin
+
+
 Your application should now be running! Open your browser and navigate to the local development server URL provided in the terminal (usually `http://127.0.0.1:8000`).
