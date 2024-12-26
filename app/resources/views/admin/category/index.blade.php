@@ -72,6 +72,7 @@
                     @endif
                     <!-- /.card-body -->
                 </div>
+                {{ $categories->links('pagination::bootstrap-5') }}
                 <!-- /.card -->
             </div>
         </section>
