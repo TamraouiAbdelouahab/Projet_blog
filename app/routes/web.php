@@ -16,9 +16,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Public Routes
-Route::get('/public', [App\Http\Controllers\HomeController::class, 'publicIndex'])->name('public.index');
-Route::get('/public/article/{id}', [App\Http\Controllers\HomeController::class, 'publicShow'])->name('public.show');
-Route::post('/public/article/{id}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('public.article.comments.store');
+Auth::routes();
+Route::get('/public', [App\Http\Controllers\HomeController::class, 'publicIndex'])->name('public.public.index');
+Route::get('/public/article/{id}', [App\Http\Controllers\HomeController::class, 'publicShow'])->name('public.public.show');
+Route::post('/articles/{id}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('public.article.comments.store');
 
 // Admin Routes with 'admin' role middleware
 Route::group(['middleware' => ['role:admin']], function () {
