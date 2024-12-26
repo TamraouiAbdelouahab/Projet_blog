@@ -14,7 +14,7 @@
                         <div class="icon">
                             <i class="fas fa-user"></i>
                         </div>
-                        <a href="#" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ Route('user.index') }}" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -41,7 +41,7 @@
                             <p class="fs-3 fw-bold">Catégories</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-tags"></i>
+                            <i class="fas fa-layer-group"></i>
                         </div>
                         <a href="{{ Route('category.index') }}" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="icon">
                             <i class="fas fa-comment"></i>
                         </div>
-                        <a href="#" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ Route('comment.index') }}" class="small-box-footer">plus infos <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

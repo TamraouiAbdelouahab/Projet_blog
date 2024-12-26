@@ -1,40 +1,57 @@
-@extends('layouts.admin')
-    @section('content')
-        <div class="card card-primary">
-            <div class="container-fluid">
-                <div class="row mb-2 pt-4 justify-content-end">
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{Route('dashboard')}}">Accueil</a></li>
-                            <li class="breadcrumb-item active"><a href="{{Route('tag.index')}}">Tag</a></li>
-                            <li class="breadcrumb-item active">Modifier</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            <div class="card-header">
-                <h3 class="card-title">modifier un tag</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form action="{{ Route('tag.update',$tag) }}" method="POST">
-                @csrf <!-- Pour la sécurité CSRF -->
-                @method('put')
-                <div class="card-body">
-                    <!-- Champ Nom -->
-                    <div class="form-group">
-                        <label for="title">Nom</label>
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Entrez le Nom" value="{{ $tag->name }}">
-                    </div>
-                    <!-- Champ slug -->
-                    <div class="form-group">
-                        <label for="slug">Slug</label>
-                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Entrez le slug" value="{{ $tag->slug }}">
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                </div>
-            </form>
+@extends('layouts.app')
+
+@section('content')
+<div class="container mt-5">
+    <h2>Edit User Role & Permissions</h2>
+    
+    <form action="{{ route('user.update', $user->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        {{-- User Info --}}
+        <div class="mb-4">
+            <label for="name" class="form-label">User Name</label>
+            <input type="text" class="form-control" value="{{ $user->name }}" readonly>
         </div>
-    @endsection
+
+        {{-- Role Selection --}}
+        <div class="mb-4">
+            <label for="role" class="form-label">Role</label>
+            <select name="role" id="role" class="form-select">
+                <option value="">Select Role</option>
+                @foreach($roles as $role)
+                    <option value="{{ $role->name }}" 
+                       @selected($user->hasRole($role->name))>
+                        {{ ucfirst($role->name) }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        {{-- Permissions Checkboxes --}}
+        <div class="mb-4">
+            <label class="form-label">Permissions</label>
+            <div class="row">
+                @foreach($permissions as $permission)
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" 
+                                   type="checkbox" 
+                                   name="permissions[]" 
+                                   value="{{ $permission->name}}" 
+                                   id="permission_{{ $permission->id }}"
+                                   {{ in_array($permission->id, $userPermissions) ||$user->hasRole('admin') ? 'checked' : '' }}>
+                                 <label class="form-check-label" for="permission_{{ $permission->id }}">
+                                {{ ucfirst($permission->name) }}
+                            </label>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- Submit Button --}}
+        <button type="submit" class="btn btn-primary">Update User</button>
+    </form>
+</div>
+@endsection

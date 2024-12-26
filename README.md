@@ -36,20 +36,21 @@ Follow these steps to set up and run the **Projet_blog** application on your loc
     ```bash
     php artisan key:generate
     ```
-6. generate permission and Roles
-    ```bash
+## partier securiter
+7. Installer package via composer
+     ```bash
     composer require spatie/laravel-permission
     ```
 
 ## Set Up the Database:
 
-6. Run the database migrations:
+8. Run the database migrations:
 
     ```bash
     php artisan migrate
     ```
 
-7. Seed the database with initial data (if required):
+9. Seed the database with initial data (if required):
 
     ```bash
     php artisan db:seed
@@ -57,19 +58,19 @@ Follow these steps to set up and run the **Projet_blog** application on your loc
 
 ## Install Frontend Dependencies:
 
-8. Install Node.js dependencies:
+10. Install Node.js dependencies:
 
     ```bash
     npm install
     ```
 
-9. Build the frontend assets:
+11. Build the frontend assets:
 
     ```bash
     npm run build
     ```
 
-10. (Optional) Start the development server for live updates:
+12. (Optional) Start the development server for live updates:
 
     ```bash
     npm run dev
@@ -77,7 +78,7 @@ Follow these steps to set up and run the **Projet_blog** application on your loc
 
 ## Run the Application:
 
-11. Serve the application:
+13. Serve the application:
 
     ```bash
     php artisan serve

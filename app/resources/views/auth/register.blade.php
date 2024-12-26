@@ -3,11 +3,13 @@
 @section('content')
 <div class="card card-outline card-primary">
     <div class="card-header text-center">
-        <a href="{{ url('/') }}" class="h1"><b>Prototype</b>Blog</a>
+        <a href="{{ url('/') }}" class="h1"><b>Soli-</b>Blogs</a>
     </div>
     <div class="card-body">
         {{-- TODO :  --}}
-        <p class="login-box-msg">Sign in to start your session</p>
+        <div class="card card-info mb-2">
+            <p class="card-header text-center">Sign in to start your session</p>
+        </div>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -17,7 +19,7 @@
                        value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
                 <div class="input-group-append">
                     <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
+                        <span class="fas fa-address-card"></span>
                     </div>
                 </div>
                 @error('name')
