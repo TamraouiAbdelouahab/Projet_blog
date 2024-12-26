@@ -16,15 +16,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
-                <div class="row mb-2 justify-content-end">
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <a href="{{ Route('comment.edit',$comment) }}" class="btn btn-primary btn-sm p-2 text-white"><i class="fas fa-edit mr-2"></i>Modifier</a>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+            
         </section>
         <section class="content">
             <div class="container-fluid">
@@ -40,7 +32,7 @@
                     <h4>Created At:</h4>
                     <p>{{ $comment->created_at }}</p>
 
-                    
+
                 </div>
             </div>
         </section>

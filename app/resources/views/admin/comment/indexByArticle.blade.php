@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Liste des Commentaires</b></h1>
+                        <h1>Liste des Commentaires d' article <b>{{$article->title}}</b></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -53,13 +53,18 @@
                                         <td>{{ $comment->user->name }}</td>
                                         <td>{{ $comment->created_at->format('Y-m-d') }}</td>
                                         <td>
-                                            <a href="{{ route('comment.show', $comment) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
-                                            <form action="{{ route('comment.destroy', $comment) }}" method="POST" style="display:inline;">
+                                            <a href="{{ route('comment.show', $comment) }}" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <form action="{{ route('comment.destroyByArticle', $comment) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
                                             </form>
                                         </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

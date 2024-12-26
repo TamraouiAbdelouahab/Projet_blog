@@ -17,6 +17,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('articles/{article}/comments', [CommentController::class, 'indexByArticle'])->name('comment.indexByArticle');
+Route::delete('articles/comment/{comment}', [CommentController::class, 'destroyByArticle'])->name('comment.destroyByArticle');
 
 
 
