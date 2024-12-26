@@ -32,7 +32,6 @@
                                     <i class="fas fa-sign-out-alt mr-2"></i> Logout
                                 </button>
                             </form>
-                            
                         </li>
                     </ul>
                 </li>
@@ -51,8 +50,14 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link">
+                            <a href="{{ route('public.public.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
+                                <p>Accueil</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dashboard') }}" class="nav-link">
+                                <i class="nav-icon fas fa-chart-bar"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
@@ -68,25 +73,25 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('article.index') }}" class="nav-link">
-                                        <i class="fas fa-circle nav-icon"></i>
+                                        <i class="fas fa-newspaper nav-icon"></i>
                                         <p>Articles</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('category.index') }}" class="nav-link">
-                                        <i class="fas fa-circle nav-icon"></i>
+                                        <i class="fas fa-layer-group nav-icon"></i>
                                         <p>Categories</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('tag.index') }}" class="nav-link">
-                                        <i class="fas fa-circle nav-icon"></i>
+                                        <i class="fas fa-tags nav-icon"></i>
                                         <p>Tags</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('user.index') }}" class="nav-link">
-                                        <i class="fas fa-circle nav-icon"></i>
+                                        <i class="fas fa-user nav-icon"></i>
                                         <p>Users</p>
                                     </a>
                                 </li>
@@ -105,9 +110,9 @@
         <!-- Footer -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline">
-                Anything you want
+                <b>Version 1.0</b> 
             </div>
-            <strong>Copyright &copy; 2024 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2024 <a href="{{ Route('public.public.index') }}"><b>Soli-</b>Blogs</a>.</strong> All rights reserved.
         </footer>
     </div>
 

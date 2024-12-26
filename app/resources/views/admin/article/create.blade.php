@@ -2,9 +2,21 @@
 @extends('layouts.admin')
     @section('content')
         <div class="card card-primary">
+            <div class="container-fluid">
+                <div class="row mb-2 pt-4 justify-content-end">
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{Route('dashboard')}}">Accueil</a></li>
+                            <li class="breadcrumb-item active"><a href="{{Route('article.index')}}">Articles</a></li>
+                            <li class="breadcrumb-item active">Ajouter</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
             <div class="card-header">
                 <h3 class="card-title">Ajouter un Article</h3>
             </div>
+            
             <!-- /.card-header -->
             <!-- form start -->
             <form action="{{route('article.store')}}" method="POST">
