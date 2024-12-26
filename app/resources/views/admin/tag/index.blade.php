@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Liste des users</h1>
+                        <h1>Liste des tags</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{Route('dashboard')}}">Accueil</a></li>
-                            <li class="breadcrumb-item active">users</li>
+                            <li class="breadcrumb-item active">tags</li>
                         </ol>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <div class="row mb-2 justify-content-end">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ Route('user.create') }}" class="btn btn-primary btn-sm p-2 text-white"><i class="fas fa-plus"></i> Ajouter user</a>
+                            <a href="{{ Route('tag.create') }}" class="btn btn-primary btn-sm p-2 text-white"><i class="fas fa-plus"></i> Ajouter tag</a>
                         </ol>
                     </div>
                 </div>
@@ -32,10 +32,10 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Table des user</h3>
+                        <h3 class="card-title">Table des tag</h3>
                     </div>
                     <!-- /.card-header -->
-                    @if($users->isEmpty())
+                    @if($tags->isEmpty())
                         <p class="p-5 text-center">aucun article trouvé.</p>
                     @else
                         <div class="card-body table-responsive p-0">
@@ -51,20 +51,20 @@
                                 </thead>
                                 <tbody>
                                    
-                                    @foreach($users as $user)
+                                    @foreach($tags as $tag)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->slug }}</td>
-                                        <td>{{ $user->created_at->format('Y-m-d') }}</td>
+                                        <td>{{ $tag->id }}</td>
+                                        <td>{{ $tag->name }}</td>
+                                        <td>{{ $tag->slug }}</td>
+                                        <td>{{ $tag->created_at->format('Y-m-d') }}</td>
                                         <td>
-                                            <a href="{{ Route('user.edit',$user) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
-                                            <form action="{{ Route('user.destroy',$user) }}" method="POST" class="d-inline">
+                                            <a href="{{ Route('tag.edit',$tag) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
+                                            <form action="{{ Route('tag.destroy',$tag) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" onclick="confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> </button>
                                             </form>
-                                            <a href="{{ Route('user.show',$user) }}" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i> </a>
+                                            <a href="{{ Route('tag.show',$tag) }}" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i> </a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -79,6 +79,6 @@
                 </div>
                 <!-- /.card -->
             </div>
-            {{ $users->links('pagination::bootstrap-5') }}
+            {{ $tags->links('pagination::bootstrap-5') }}
         </section>
     @endsection
