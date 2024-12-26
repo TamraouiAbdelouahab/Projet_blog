@@ -21,13 +21,20 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        $user = User::create([
+            'name'=>'admin',
+            'email'=>'admin@gmail.com',
+            'password'=>bcrypt('admin')
+        ]);
         // Call other seeders
         $this->call([
             CategorySeeder::class,  // Add CategorySeeder
             TagSeeder::class,       // Add TagSeeder
             ArticleSeeder::class,   // Add ArticleSeeder
             ArticleTagSeeder::class,// Add ArticleTagSeeder
+            RolePermissionSeeder::class,// Add Role & permission
         ]);
+        $user->assignRole('admin');
     }
 }
 
