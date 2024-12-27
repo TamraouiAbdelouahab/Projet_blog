@@ -36,13 +36,18 @@
         @auth
             <div class="relative">
                 <button id="user-menu-btn" class="flex items-center text-sm text-gray-900 hover:text-gray-600 focus:outline-none focus:ring">
+                    <!-- User Image -->
+                    <img src="{{ Auth::user()->profile_picture ?: 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=random&color=fff&bold=true&rounded=true&size=400&length=2' }}" alt="User Image" class="w-8 h-8 rounded-full mr-2">
                     {{ Auth::user()->name }}
                     <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <!-- Dropdown Menu (initially hidden) -->
-                <ul id="user-menu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden">
+                <ul id="user-menu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 pointer-events-none transform translate-y-2 transition-all duration-300 hidden">
+                    <li class="flex-1">
+                        <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+                    </li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -70,12 +75,27 @@
             menu.classList.toggle('hidden');
         });
 
-        // Simple click-based dropdown
+        // Simple click-based dropdown with smooth transition
         const userMenuBtn = document.getElementById('user-menu-btn');
         const userMenu = document.getElementById('user-menu');
-        userMenuBtn.addEventListener('click', () => {
+        userMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent click from bubbling up
             userMenu.classList.toggle('hidden');
+            userMenu.classList.toggle('opacity-0');
+            userMenu.classList.toggle('pointer-events-none');
+            userMenu.classList.toggle('translate-y-2');
         });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userMenu.contains(e.target) && !userMenuBtn.contains(e.target)) {
+                userMenu.classList.add('hidden');
+                userMenu.classList.add('opacity-0');
+                userMenu.classList.add('pointer-events-none');
+                userMenu.classList.add('translate-y-2');
+            }
+        });
+
     </script>
 </body>
 </html>

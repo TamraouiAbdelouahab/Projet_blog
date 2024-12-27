@@ -11,11 +11,10 @@
     <!-- Article Card -->
     <div class="bg-white shadow-xl rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
         <!-- Article Image -->
-        @if(!empty($article->image_url))
-            <img class="w-full h-72 object-cover transform transition-transform duration-300 hover:scale-105" src="{{ $article->image_url }}" alt="{{ $article->title }}">
-        @else
-            <img class="w-full h-72 object-cover transform transition-transform duration-300 hover:scale-105" src="https://via.placeholder.com/1200x600" alt="Placeholder Image">
-        @endif
+        <img class="w-full h-80 object-cover rounded-t-lg transform transition-transform duration-300 hover:scale-105"
+            src="{{ $article->image_url ?: 'https://ui-avatars.com/api/?name=' . urlencode($article->title) . '&background=random&color=fff&bold=true&size=300&length=2' }}" 
+            alt="{{ $article->title }}">
+
         <div class="p-8 space-y-4">
 
             <!-- Article Title -->
@@ -51,7 +50,9 @@
                 @foreach ($article->comments as $comment)
                     <div class="flex space-x-4 border-b border-gray-300 pb-4">
                         <!-- User Avatar -->
-                        <img class="w-14 h-14 rounded-full object-cover" src="{{ $comment->user->profile_picture ?? 'https://via.placeholder.com/150' }}" alt="{{ $comment->user->name }}">
+                        <img class="w-14 h-14 rounded-full object-cover" 
+                            src="{{ $comment->user->profile_picture ?? 'https://ui-avatars.com/api/?name=' . urlencode($comment->user->name) . '&background=random&color=fff&bold=true&size=400&length=2' }}" 
+                            alt="{{ $comment->user->name }}">
 
                         <div class="flex-1">
                             <!-- User Name and Timestamp -->
@@ -69,7 +70,7 @@
         @endif
 
         <!-- Add Comment Form -->
-        <form action="{{ route('public.article.comments.store', $article->id) }}" method="POST" class="mt-8">
+        <form action="{{ route('public.article.comments.store', $article->id) }}" id="comment-form" method="POST" class="mt-8">
             @csrf
             <textarea name="content" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Write your comment..." required></textarea>
 

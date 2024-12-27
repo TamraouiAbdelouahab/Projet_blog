@@ -52,8 +52,8 @@
             <!-- Article Image -->
             <a href="{{ route('public.public.show', $article->id) }}">
                 <img 
-                    class="w-full h-48 object-cover" 
-                    src="{{ $article->image_url ?: 'https://via.placeholder.com/400x200' }}" 
+                    class="w-full h-56 object-cover rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+                    src="{{ $article->image_url ?: 'https://ui-avatars.com/api/?name=' . urlencode($article->title) . '&background=random&color=fff&bold=true&size=400&length=2' }}" 
                     alt="{{ $article->title }}">
             </a>
             
@@ -93,8 +93,8 @@
                 <!-- Author Info -->
                 <div class="flex items-center">
                     <img 
-                        class="w-8 h-8 rounded-full object-cover" 
-                        src="{{ $article->user->profile_picture ?: 'https://via.placeholder.com/50' }}" 
+                        class="w-10 h-10 rounded-full object-cover border-2 border-gray-200" 
+                        src="{{ $article->user->profile_picture ?: 'https://ui-avatars.com/api/?name=' . urlencode($article->user->name) . '&background=random&color=fff&bold=true&rounded=true&size=400&length=2' }}" 
                         alt="{{ $article->user->name }}">
                     <p class="ml-2 text-sm font-medium text-gray-700">
                         {{ $article->user->name }}
