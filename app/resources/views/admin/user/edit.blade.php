@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container mt-5">
@@ -54,4 +54,6 @@
         <button type="submit" class="btn btn-primary">Update User</button>
     </form>
 </div>
+<script src="{{ asset('js/userEdit.js') }}"></script>
+
 @endsection
