@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+            {{-- <div class="container-fluid">
                 <div class="row mb-2 justify-content-end">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -23,7 +23,7 @@
                         </ol>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </section>
         
         <!-- Main content -->
