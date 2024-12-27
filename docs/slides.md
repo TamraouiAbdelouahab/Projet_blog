@@ -1,4 +1,4 @@
-## Projet Blog
+>## Projet Blog
 
 - **Réalisé par** :
   - Zakaria Azizi  
@@ -11,6 +11,11 @@
 
 ### **1. Introduction**
 <img src="Blog.png" alt="Diagramme des classes" width="850" height="590">
+
+|||
+### **2. Methodologie de travail :**
+<img src="2tup (1).png" alt="Diagramme des classes" width="850" height="590">
+
 |||
 
 ### **3. Planification :**
@@ -80,3 +85,4 @@
 |||
 
 ### **9. Conclusion :**  
+> Merci pour votre attention
