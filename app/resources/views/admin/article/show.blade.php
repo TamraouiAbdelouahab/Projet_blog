@@ -31,20 +31,20 @@
                 <div class="card p-4">
                     <h4>ID:</h4>
                     <p>{{ $article->id }}</p>
-                    <h4>Name:</h4>
+                    <h4>Titre:</h4>
                     <p>{{ $article->title }}</p>
-                    <h4>Content:</h4>
+                    <h4>Contenue:</h4>
                     <p>{{ $article->content }}</p>
-                    <h4>User ID:</h4>
-                    <p>{{ $article->user_id }}</p>
-                    <h4>Category ID:</h4>
-                    <p>{{ $article->category_id }}</p>
-                    <h4>Created At:</h4>
-                    <p>{{ $article->created_at }}</p>
+                    <h4>Auteur:</h4>
+                    <p>{{ $article->user->name }}</p>
+                    <h4>Categorie:</h4>
+                    <p>{{ $article->category->name }}</p>
+                    <h4>Date de publication:</h4>
+                    <p>{{ $article->created_at->format('d M Y, H:i') }}</p>
 
                     <div class="d-flex justify-content-end mt-3">
                         <a href="{{ Route('comment.indexByArticle',$article) }}" class="btn btn-secondary btn-sm p-2 text-white">
-                            <i class="fas fa-comments mr-2"></i>View Comments
+                            <i class="fas fa-comments mr-2"></i>Voire les commentaires
                         </a>
                     </div>
                 </div>

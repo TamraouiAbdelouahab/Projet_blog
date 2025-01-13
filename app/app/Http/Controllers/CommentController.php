@@ -113,4 +113,22 @@ class CommentController extends Controller
             ->route('comment.indexByArticle', $article)
             ->with('success', 'Commentaire supprimé avec succès.');
     }
+
+    public function filter(Request $request){
+
+        $author = $request->query('author');
+        $article = $request->query('article');
+
+        $comment = Comment::query();
+
+        if ($author) {
+            $comment->whereHas('user', function ($query) use ($author) {
+                $query->where('name', 'like', '%' . $author . '%');
+            });
+        }
+
+        return view('admin.comment.index', compact('comment'));
+
+    }
+    
 }

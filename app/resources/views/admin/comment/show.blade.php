@@ -1,42 +1,65 @@
 @extends('layouts.admin')
-    @section('content')
-        <!-- Content Header -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Détail</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{Route('dashboard')}}">Accueil</a></li>
-                            <li class="breadcrumb-item active"><a href="{{Route('comment.index')}}">comments</a></li>
-                            <li class="breadcrumb-item active">view</li>
-                        </ol>
-                    </div>
+@section('content')
+    <!-- Content Header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Détails du Commentaire</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('comment.index') }}">Commentaires</a></li>
+                        <li class="breadcrumb-item active">Vue</li>
+                    </ol>
                 </div>
             </div>
-            
-        </section>
-        <section class="content">
-            <div class="container-fluid">
-                <div class="card p-4">
-                    <h4>ID:</h4>
-                    <p>{{ $comment->id }}</p>
+        </div>
+    </section>
 
-                    <h4>Content:</h4>
-                    <p>{{ $comment->content }}</p>
-                    <h4>User ID:</h4>
-                    <p>{{ $comment->user_id }}</p>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card shadow-sm p-4">
 
-                    <h4>Created At:</h4>
-                    <p>{{ $comment->created_at }}</p>
-
-
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>ID :</strong>
+                            <p class="text-muted">{{ $comment->id }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Créé le :</strong>
+                            <p class="text-muted">{{ $comment->created_at->format('d M Y, H:i') }}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <strong>Contenu :</strong>
+                            <p class="text-muted">{{ $comment->content }}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Utilisateur :</strong>
+                            <p class="text-muted">{{ $comment->user->name ?? 'Non attribué' }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Email de l'utilisateur :</strong>
+                            <p class="text-muted">{{ $comment->user->email ?? 'Non disponible' }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ route('comment.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i></a>
+                    <form action="{{ route('comment.destroy', $comment) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
                 </div>
             </div>
-        </section>
-
-
-
-    @endsection
+        </div>
+    </section>
+@endsection

@@ -21,7 +21,7 @@ Route::get('articles/{article}/comments', [CommentController::class, 'indexByArt
 Route::delete('articles/comment/{comment}', [CommentController::class, 'destroyByArticle'])->name('comment.destroyByArticle');
 
 
-
+Route::get('/dashboard/comment', [App\Http\Controllers\CommentController::class, 'filter'])->name('comment.filter');
 Route::resource('/dashboard/comment',CommentController::class);
 Route::resource('/dashboard/article',ArticleController::class);
 Route::resource('/dashboard/category',CategoryController::class);
