@@ -5,12 +5,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Liste des Articles</h1>
+                        {{-- <h1>Liste des Articles</h1> --}}
+                        <h1>{{ __('message.List of articles') }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            <li class="breadcrumb-item active">Articles</li>
+                            <li class="breadcrumb-item"><a href="#">{{ __('message.home') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('message.Articles') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -19,7 +20,7 @@
                 <div class="row mb-2 justify-content-end">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ Route('article.create') }}" class="btn btn-primary btn-sm p-2 text-white"><i class="fas fa-plus"></i> Ajouter article</a>
+                            <a href="{{ Route('article.create') }}" class="btn btn-primary btn-sm p-2 text-white"><i class="fas fa-plus"></i> {{ __('message.add article') }}</a>
                         </ol>
                     </div>
                 </div>
@@ -31,7 +32,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Table des Articles</h3>
+                        <h3 class="card-title">{{ __('message.table of articles') }}</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -39,11 +40,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>User</th>
-                                    <th>Post date</th>
-                                    <th>Actions</th>
+                                    <th>{{ __('message.title') }}</th>
+                                    <th>{{ __('message.category') }}</th>
+                                    <th>{{ __('message.user') }}</th>
+                                    <th>{{ __('message.post date') }}</th>
+                                    <th>{{ __('message.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
